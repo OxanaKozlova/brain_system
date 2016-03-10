@@ -64,6 +64,11 @@ extern "C" void __cxa_pure_virtual() {;}
 #define portInputRegister(P)
 #define portModeRegister(P)
 #include <..\BrainSystem\BrainSystem.ino>
+#include <..\BrainSystem\BrainRingMode.cpp>
+#include <..\BrainSystem\BrainRingMode.h>
+#include <..\BrainSystem\Constants.h>
 #include <..\BrainSystem\GameMode.cpp>
 #include <..\BrainSystem\GameMode.h>
+#include <..\BrainSystem\TimerOne.cpp>
+#include <..\BrainSystem\TimerOne.h>
 #endif
