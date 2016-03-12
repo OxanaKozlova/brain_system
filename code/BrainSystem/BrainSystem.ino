@@ -14,7 +14,8 @@
 
 
 GameMode *gameMode;
-bool isPushed = false;
+int flag;
+bool isPushed;
 void setup() {
 	for (int i = 0; i < ARRAY_SIZE(ARRAY_USER_BUTTON); i++){
 		pinMode(ARRAY_USER_BUTTON[i], INPUT);
@@ -25,12 +26,15 @@ void setup() {
 	}
 
 	pinMode(ADMIN_BUTTON_RESET, INPUT);
-	pinMode(ADMIN_BUTTON_SET, INPUT);	
+	pinMode(ADMIN_BUTTON_SET, INPUT);
+	pinMode(SOUND, OUTPUT);
 	pciSetup(ADMIN_BUTTON_RESET);
 	pciSetup(ADMIN_BUTTON_SET);
 	gameMode = new BrainRingMode();
 
 	Timer1.initialize(1000000);
+	Timer1.stop();
+	
 	
 
 
@@ -53,14 +57,7 @@ void pciSetup(byte pin)
 
 ISR(PCINT0_vect){
 	noInterrupts();
-	if (digitalRead(ADMIN_BUTTON_SET) == HIGH){
-		isPushed = false;
-		gameMode->Set();	
-		Timer1.attachInterrupt(TimerInterrupt);
-	}
-	if (digitalRead(ADMIN_BUTTON_RESET) == HIGH){
-		gameMode->Reset();
-	}
+	
 	interrupts();
 
 }
@@ -72,10 +69,25 @@ ISR(PCINT1_vect){
 		for (int i = 0; i < ARRAY_SIZE(ARRAY_USER_BUTTON); i++){
 			if (digitalRead(ARRAY_USER_BUTTON[i]) == HIGH){
 				UserButtonPushed(ARRAY_LED[i]);
+				flag = 0;
 				break;
 			}
 		}
 	}
+
+	if (digitalRead(ADMIN_BUTTON_SET) == HIGH && flag == 0){
+		isPushed = false;
+		gameMode->Set();
+		Timer1.attachInterrupt(TimerInterrupt);
+		
+		
+		flag = 1;
+	}
+	if (digitalRead(ADMIN_BUTTON_RESET) == HIGH){
+		gameMode->Reset();
+		flag = 0;
+	}
+
 	interrupts();
 }
 
@@ -83,6 +95,7 @@ void UserButtonPushed(int pin){
 	digitalWrite(pin, HIGH);
 	isPushed = true;
 	Timer1.stop();
+	gameMode->SetPin(pin);
 }
 
 

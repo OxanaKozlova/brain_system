@@ -24,9 +24,24 @@
     <ClInclude Include="GameMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BrainRingMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerOne.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BrainRingMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerOne.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
