@@ -49,22 +49,12 @@ void pciSetup(byte pin) {
 
 // the loop function runs over and over again until power down or reset
 
-ISR(PCINT1_vect){
+ISR(PCINT0_vect) {
 	noInterrupts();
-	if (isPushed == false) {
-		for (int i = 0; i < ARRAY_SIZE(ARRAY_USER_BUTTON); i++){
-			if (digitalRead(ARRAY_USER_BUTTON[i]) == HIGH){
-				UserButtonPushed(ARRAY_LED[i]);
-				flag = 0;
-				break;
-			}
-		}
-	}
-
 	if (digitalRead(ADMIN_BUTTON_SET) == HIGH && flag == 0) {
 		isPushed = false;
 		gameMode->Set();
-		Timer1.attachInterrupt(TimerInterrupt);		
+		Timer1.attachInterrupt(TimerInterrupt);
 		flag = 1;
 	}
 
@@ -72,6 +62,23 @@ ISR(PCINT1_vect){
 		Timer1.stop();
 		gameMode->Reset();
 		flag = 0;
+	}
+	interrupts();
+}
+
+ISR(PCINT1_vect){
+	noInterrupts();
+	 if (isPushed == false) {
+		if (flag == 0) {
+			gameMode->FalseStart();
+		}
+		for (int i = 0; i < ARRAY_SIZE(ARRAY_USER_BUTTON); i++){
+			if (digitalRead(ARRAY_USER_BUTTON[i]) == HIGH){
+				UserButtonPushed(ARRAY_LED[i]);
+				flag = 0;
+				break;
+			}
+		}
 	}
 
 	interrupts();

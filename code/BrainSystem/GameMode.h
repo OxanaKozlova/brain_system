@@ -7,6 +7,7 @@ public:
 	virtual void Set();
 	virtual void Reset();
 	virtual void SetTimer();
+	virtual void FalseStart();
 	void SetPin(int pin);
 	int GetPin();	
 };

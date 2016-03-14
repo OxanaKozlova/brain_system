@@ -18,5 +18,6 @@ public:
 	virtual void Set();
 	virtual void Reset();
 	virtual void SetTimer();
+	virtual void FalseStart();
 	void CheckTimeLeft(int timeLeft);	
 };
