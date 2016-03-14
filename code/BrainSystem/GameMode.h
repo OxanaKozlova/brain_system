@@ -1,15 +1,12 @@
 #pragma once
-class GameMode
-{
+class GameMode {
 private:
 	int pin;
 
-public:
-	
+public:	
 	virtual void Set();
 	virtual void Reset();
 	virtual void SetTimer();
 	void SetPin(int pin);
-	int GetPin();
-	
+	int GetPin();	
 };

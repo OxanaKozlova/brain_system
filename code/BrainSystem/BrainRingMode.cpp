@@ -1,63 +1,38 @@
 #include "BrainRingMode.h"
 #include "Arduino.h"
-BrainRingMode::BrainRingMode(){
+BrainRingMode::BrainRingMode() {
 	 setPushes = 0;
-
-
 }
 
-BrainRingMode::~BrainRingMode(){
-	
+BrainRingMode::~BrainRingMode() {	
 	
 }
 
-void BrainRingMode::Set(){
-	
-	
-	if (setPushes == 0){
-		digitalWrite(SOUND, HIGH);
+void BrainRingMode::Set() {
+	if (setPushes == 0) {
+		tone(SOUND_PIN, FREQUENCY, TIME);
 		timer = FIRST_TIMER;
 
 	}	
-	else if (setPushes > 0){
-		//digitalWrite(SOUND, LOW);
+	else if (setPushes == 1) {
+		tone(SOUND_PIN, FREQUENCY, TIME);
 		digitalWrite(GetPin(), LOW);
 		timer = SECOND_TIMER;
 	}
-	setPushes++;
-	
-		
+
+	setPushes++;		
 }
 
-void BrainRingMode::SetTimer(){
-
-	/*if (setPushes == 0) {
-		CheckTimeLeft(firstTimer);
-	}
-	else if (setPushes > 0) {
-		CheckTimeLeft(seconedTimer);
-	}*/
-
+void BrainRingMode::SetTimer() {
 	timer--;
 	if (timer == 0) {
-		digitalWrite(SOUND, LOW);
-	}
-
-
-}
-
-void BrainRingMode:: CheckTimeLeft(int timeLeft) {
-	timeLeft--;
-	if (timeLeft == 0) {
-		digitalWrite(SOUND, LOW);
+		tone(SOUND_PIN, FREQUENCY, TIME);
 	}
 }
 
 void BrainRingMode::Reset(){
 	setPushes = 0;
 	digitalWrite(GetPin(), LOW);
-
-
 }
 
 
