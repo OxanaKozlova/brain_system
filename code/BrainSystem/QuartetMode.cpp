@@ -15,8 +15,7 @@ void QuartetMode::SetTimer(){
 	
 }
 
-void QuartetMode::FalseStart(){
-	
+void QuartetMode::FalseStart(){	
 
 }
 
@@ -28,12 +27,10 @@ QuartetMode::~QuartetMode(){
 
 }
 
-bool QuartetMode::UserButtonPushed(int pin, bool isPushed){
+bool QuartetMode::UserButtonPushed(int pin){
 	digitalWrite(pin, HIGH);
 	tone(SOUND_PIN, FREQUENCY_USER, TIME);
-	isPushed = false;
-	Timer1.stop();
 	this->SetPin(pin);
-	return isPushed;
+	return true;
 }
 

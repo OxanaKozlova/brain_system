@@ -15,7 +15,7 @@
 	 virtual void Reset();
 	 virtual void SetTimer();
 	 virtual void FalseStart();
-	 virtual bool UserButtonPushed(int pin, bool isPushed);
+	 virtual bool UserButtonPushed(int pin);
 
 	
  };

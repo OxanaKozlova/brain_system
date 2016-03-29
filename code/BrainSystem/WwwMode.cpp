@@ -25,18 +25,14 @@ void WwwMode::SetTimer(){
 
 }
 
-bool WwwMode::UserButtonPushed(int pin, bool isPushed){
-	if (timer < 59 ){
-		return false;
-	}
-	else{
+bool WwwMode::UserButtonPushed(int pin){
+	if (timer >= 59){
 		digitalWrite(pin, HIGH);
-		tone(SOUND_PIN, FREQUENCY_USER, TIME);
-		isPushed = true;
+		tone(SOUND_PIN, FREQUENCY_USER, TIME);		
 		Timer1.stop();
-		this->SetPin(pin);
-		return isPushed;
+		this->SetPin(pin);		
 	}	
+	return true;
 }
 
 void WwwMode::FalseStart(){

@@ -2,6 +2,7 @@
 class GameMode {
 private:
 	int pin;
+	bool isFalseStart = true;
 
 public:	
 	virtual void Set();
@@ -9,6 +10,8 @@ public:
 	virtual void SetTimer();
 	virtual void FalseStart();
 	void SetPin(int pin);
-	virtual bool UserButtonPushed(int pin, bool isPushed);
+	virtual bool UserButtonPushed(int pin);
 	int GetPin();	
+	bool GetFalseStart();
+	void SetFalseStart(bool value);
 };

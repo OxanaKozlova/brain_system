@@ -15,8 +15,8 @@
 #include "QuartetMode.h"
 
 GameMode *gameMode;
-int flag;
-bool isPushed;
+
+bool isPushed = false;
 
 void setup() {
 	for (int i = 0; i < ARRAY_SIZE(ARRAY_USER_BUTTON); i++) {
@@ -33,9 +33,9 @@ void setup() {
 	pciSetup(ADMIN_BUTTON_RESET);
 	pciSetup(ADMIN_BUTTON_SET);
 
-	//gameMode = new BrainRingMode();
-	gameMode = new WwwMode();
-	gameMode = new QuartetMode();
+	gameMode = new BrainRingMode();
+	//gameMode = new WwwMode();
+	//gameMode = new QuartetMode();
 
 	Timer1.initialize(1000000);
 	Timer1.stop();
@@ -55,47 +55,31 @@ void pciSetup(byte pin) {
 
 ISR(PCINT0_vect) {
 	noInterrupts();
-	if (digitalRead(ADMIN_BUTTON_SET) == HIGH && flag == 0) {
-		isPushed = false;
+	isPushed = false;
+	if (digitalRead(ADMIN_BUTTON_SET) == HIGH ) {	
 		gameMode->Set();
 		Timer1.attachInterrupt(TimerInterrupt);
-		flag = 1;
+		gameMode->SetFalseStart(false);
 	}
-
 	if (digitalRead(ADMIN_BUTTON_RESET) == HIGH) {
 		Timer1.stop();
 		gameMode->Reset();
-		flag = 0;
+		gameMode->SetFalseStart(true);
 	}
 	interrupts();
 }
 
 ISR(PCINT1_vect){
-	noInterrupts();
-	 if (isPushed == false) {
-		if (flag == 0) {
-			gameMode->FalseStart();
-		}
+	noInterrupts();	
+	if (isPushed == false){
 		for (int i = 0; i < ARRAY_SIZE(ARRAY_USER_BUTTON); i++){
 			if (digitalRead(ARRAY_USER_BUTTON[i]) == HIGH){
-				isPushed = gameMode->UserButtonPushed(ARRAY_LED[i], isPushed);
-				flag = 0;
-				break;
+				isPushed = gameMode->UserButtonPushed(ARRAY_LED[i]);
 			}
-		}
-	}
-
+		}		
+	}	
 	interrupts();
 }
-
-/*void UserButtonPushed(int pin, bool isPushed) {
-	digitalWrite(pin, HIGH);
-	tone(SOUND_PIN, FREQUENCY_USER, TIME);
-	isPushed = true;
-	Timer1.stop();
-	gameMode->SetPin(pin);
-}*/
-
 
 void TimerInterrupt() {
 	gameMode->SetTimer();

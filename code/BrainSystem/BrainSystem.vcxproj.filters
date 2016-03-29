@@ -36,6 +36,9 @@
     <ClInclude Include="WwwMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="QuartetMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameMode.cpp">
@@ -48,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WwwMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QuartetMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -11,6 +11,7 @@ private:
 	int seconedTimer;
 	int timer;
 	
+	
 public:
 	BrainRingMode();
 	~BrainRingMode();
@@ -19,5 +20,6 @@ public:
 	virtual void Reset();
 	virtual void SetTimer();
 	virtual void FalseStart();
-	void CheckTimeLeft(int timeLeft);	
+	void CheckTimeLeft(int timeLeft);
+	virtual bool UserButtonPushed(int pin);
 };
