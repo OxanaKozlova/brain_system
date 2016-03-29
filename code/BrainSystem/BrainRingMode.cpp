@@ -27,6 +27,7 @@ void BrainRingMode::SetTimer() {
 	timer--;
 	if (timer == 0) {
 		tone(SOUND_PIN, FREQUENCY, TIME);
+		//setPushes = 0; 
 	}
 }
 

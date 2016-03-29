@@ -69,6 +69,10 @@ extern "C" void __cxa_pure_virtual() {;}
 #include <..\BrainSystem\Constants.h>
 #include <..\BrainSystem\GameMode.cpp>
 #include <..\BrainSystem\GameMode.h>
+#include <..\BrainSystem\QuartetMode.cpp>
+#include <..\BrainSystem\QuartetMode.h>
 #include <..\BrainSystem\TimerOne.cpp>
 #include <..\BrainSystem\TimerOne.h>
+#include <..\BrainSystem\WwwMode.cpp>
+#include <..\BrainSystem\WwwMode.h>
 #endif

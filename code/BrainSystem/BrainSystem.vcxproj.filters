@@ -33,6 +33,9 @@
     <ClInclude Include="TimerOne.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WwwMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameMode.cpp">
@@ -42,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TimerOne.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WwwMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

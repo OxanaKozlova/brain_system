@@ -15,5 +15,7 @@ const int  ARRAY_LED[] = { 4, 5, 6, 7 };
 
 #define SOUND_PIN 3
 #define FREQUENCY 2000
+
+#define FREQUENCY_USER 1500
 #define FREQUENCY_FALSESTART 200
 #define TIME	  500

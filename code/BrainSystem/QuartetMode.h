@@ -1,14 +1,18 @@
 #pragma once
-class GameMode {
-private:
-	int pin;
+#include "GameMode.h"
+#include "Constants.h"
 
-public:	
+class QuartetMode : public GameMode{
+private:
+	int timer;
+public:
+	QuartetMode();
+	~QuartetMode();
+
 	virtual void Set();
 	virtual void Reset();
 	virtual void SetTimer();
 	virtual void FalseStart();
-	void SetPin(int pin);
 	virtual bool UserButtonPushed(int pin, bool isPushed);
-	int GetPin();	
+
 };

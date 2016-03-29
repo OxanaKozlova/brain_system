@@ -84,12 +84,14 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GameMode.h" />
     <ClInclude Include="TimerOne.h" />
+    <ClInclude Include="WwwMode.h" />
     <ClInclude Include="__vm\.BrainSystem.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BrainRingMode.cpp" />
     <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="TimerOne.cpp" />
+    <ClCompile Include="WwwMode.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

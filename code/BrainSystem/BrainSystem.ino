@@ -11,6 +11,8 @@
 #include "BrainRingMode.h"
 #include "GameMode.h"
 #include "TimerOne.h"
+#include "WwwMode.h"
+#include "QuartetMode.h"
 
 GameMode *gameMode;
 int flag;
@@ -31,7 +33,9 @@ void setup() {
 	pciSetup(ADMIN_BUTTON_RESET);
 	pciSetup(ADMIN_BUTTON_SET);
 
-	gameMode = new BrainRingMode();
+	//gameMode = new BrainRingMode();
+	gameMode = new WwwMode();
+	gameMode = new QuartetMode();
 
 	Timer1.initialize(1000000);
 	Timer1.stop();
@@ -74,7 +78,7 @@ ISR(PCINT1_vect){
 		}
 		for (int i = 0; i < ARRAY_SIZE(ARRAY_USER_BUTTON); i++){
 			if (digitalRead(ARRAY_USER_BUTTON[i]) == HIGH){
-				UserButtonPushed(ARRAY_LED[i]);
+				isPushed = gameMode->UserButtonPushed(ARRAY_LED[i], isPushed);
 				flag = 0;
 				break;
 			}
@@ -84,12 +88,13 @@ ISR(PCINT1_vect){
 	interrupts();
 }
 
-void UserButtonPushed(int pin) {
+/*void UserButtonPushed(int pin, bool isPushed) {
 	digitalWrite(pin, HIGH);
+	tone(SOUND_PIN, FREQUENCY_USER, TIME);
 	isPushed = true;
 	Timer1.stop();
 	gameMode->SetPin(pin);
-}
+}*/
 
 
 void TimerInterrupt() {
