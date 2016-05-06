@@ -29,11 +29,25 @@ void setup() {
 
 	pinMode(ADMIN_BUTTON_RESET, INPUT);
 	pinMode(ADMIN_BUTTON_SET, INPUT);
+	pinMode(BRAIN_RING_MODE, INPUT);
+	pinMode(WWW_MODE, INPUT);
+	pinMode(QUARTET_MODE, INPUT);
 	pinMode(SOUND_PIN, OUTPUT);
 	pciSetup(ADMIN_BUTTON_RESET);
 	pciSetup(ADMIN_BUTTON_SET);
 
-	gameMode = new BrainRingMode();
+	if (BRAIN_RING_MODE == HIGH) {
+		gameMode = new BrainRingMode();
+	}
+	else if (WWW_MODE == HIGH) {
+		gameMode = new WwwMode();
+	}
+	else if (QUARTET_MODE == HIGH) {
+		gameMode = new QuartetMode();
+	}
+	else {
+		gameMode = new BrainRingMode();
+	}
 	//gameMode = new WwwMode();
 	//gameMode = new QuartetMode();
 

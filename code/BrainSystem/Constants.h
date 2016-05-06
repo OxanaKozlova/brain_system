@@ -12,10 +12,14 @@ const int  ARRAY_LED[] = { 4, 5, 6, 7 };
 #define ADMIN_BUTTON_SET 8
 #define ADMIN_BUTTON_RESET 9
 
-
 #define SOUND_PIN 3
 #define FREQUENCY 2000
 
 #define FREQUENCY_USER 1500
 #define FREQUENCY_FALSESTART 200
 #define TIME	  500
+
+#define BRAIN_RING_MODE	10
+#define WWW_MODE		11
+#define	QUARTET_MODE	12
+
