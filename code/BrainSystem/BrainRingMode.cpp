@@ -19,7 +19,7 @@ void BrainRingMode::Set() {
 	else if (setPushes == 1) {
 		tone(SOUND_PIN, FREQUENCY, TIME);
 		digitalWrite(GetPin(), LOW);
-		digitalWrite(4, HIGH);
+		//digitalWrite(4, HIGH);
 		timer = SECOND_TIMER;
 	}
 
