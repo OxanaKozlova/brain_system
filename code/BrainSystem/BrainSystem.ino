@@ -36,21 +36,30 @@ void setup() {
 	pciSetup(ADMIN_BUTTON_RESET);
 	pciSetup(ADMIN_BUTTON_SET);
 
-	if (BRAIN_RING_MODE == HIGH) {
+	if (digitalRead(BRAIN_RING_MODE) > 4 ) {
 		gameMode = new BrainRingMode();
+		digitalWrite(4, HIGH);
 	}
-	else if (WWW_MODE == HIGH) {
+	if (digitalRead(WWW_MODE) > 1) {
 		gameMode = new WwwMode();
+		digitalWrite(5, HIGH);
+		
+		
 	}
-	else if (QUARTET_MODE == HIGH) {
+	if (digitalRead(QUARTET_MODE) > 4) {
 		gameMode = new QuartetMode();
+		digitalWrite(6, HIGH);
+		
 	}
 	else {
 		gameMode = new BrainRingMode();
+		//digitalWrite(7, HIGH);
+		
 	}
 	//gameMode = new WwwMode();
 	//gameMode = new QuartetMode();
 
+	//gameMode = new BrainRingMode();
 	Timer1.initialize(1000000);
 	Timer1.stop();
 }

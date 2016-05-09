@@ -16,10 +16,10 @@ void BrainRingMode::Set() {
 		timer = FIRST_TIMER;
 		digitalWrite(GetPin(), LOW);
 	}	
-	else if (setPushes == 3) {
+	else if (setPushes == 1) {
 		tone(SOUND_PIN, FREQUENCY, TIME);
 		digitalWrite(GetPin(), LOW);
-		digitalWrite(13, HIGH);
+		digitalWrite(4, HIGH);
 		timer = SECOND_TIMER;
 	}
 
