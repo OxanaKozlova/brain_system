@@ -40,18 +40,32 @@ void setup() {
 	if (digitalRead(BRAIN_RING_MODE) == HIGH) {
 		gameMode = new BrainRingMode();
 	}
+<<<<<<< Updated upstream
 	else if (digitalRead(WWW_MODE) == HIGH) {
 		gameMode = new WwwMode();
 	} 
 	else if (digitalRead(QUARTET_MODE) == HIGH) {
 		gameMode = new QuartetMode();
+=======
+	else if (digitalRead(WWW_MODE) > 1) {
+		gameMode = new WwwMode();	
+		
+	}
+	else if (digitalRead(QUARTET_MODE) > 4) {
+		gameMode = new QuartetMode();
+		
+>>>>>>> Stashed changes
 	}
 	else {
 		gameMode = new BrainRingMode();
 	}
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 	Timer1.initialize(1000000);
 	Timer1.stop();
+
 }
 
 void loop() {
